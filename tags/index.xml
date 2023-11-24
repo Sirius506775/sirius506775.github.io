@@ -6,7 +6,16 @@
     <description>Recent content in Tags on IM SIRIUS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 06 Nov 2023 04:33:30 +0900</lastBuildDate><atom:link href="https://imsirius.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 25 Nov 2023 04:42:47 +0900</lastBuildDate><atom:link href="https://imsirius.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>oss</title>
+      <link>https://imsirius.dev/tags/oss/</link>
+      <pubDate>Sat, 25 Nov 2023 04:42:47 +0900</pubDate>
+      
+      <guid>https://imsirius.dev/tags/oss/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>aws</title>
       <link>https://imsirius.dev/tags/aws/</link>
