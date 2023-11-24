@@ -6,14 +6,14 @@
     <description>Recent content in Spring on IM SIRIUS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://imsirius.dev/categories/spring/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://imsirius.dev/categories/spring/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>첫번째 아티클</title>
-      <link>https://imsirius.dev/post/my-first-post/</link>
-      <pubDate>Thu, 23 Nov 2023 00:00:00 +0000</pubDate>
+      <title>Connection Pool(feat. HikariCP)</title>
+      <link>https://imsirius.dev/post/230217/connection-pool/</link>
+      <pubDate>Fri, 17 Feb 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://imsirius.dev/post/my-first-post/</guid>
-      <description>국회는 상호원조 또는 안전보장에 관한 조약, 중요한 국제조직에 관한 조약, 우호통상항해조약, 주권의 제약에 관한 조약, 강화조약, 국가나 국민에게 중대한 재정적</description>
+      <guid>https://imsirius.dev/post/230217/connection-pool/</guid>
+      <description>대규모의 사용자가 DB연결을 반복하는 플랫폼을 실행하는 경우에는 Database와 connection을 생성하는 과정 자체가 비용이 많이 들고, 시간이 많</description>
     </item>
     
   </channel>

@@ -44,6 +44,15 @@
     </item>
     
     <item>
+      <title>Connection Pool(feat. HikariCP)</title>
+      <link>https://imsirius.dev/post/230217/connection-pool/</link>
+      <pubDate>Fri, 17 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://imsirius.dev/post/230217/connection-pool/</guid>
+      <description>대규모의 사용자가 DB연결을 반복하는 플랫폼을 실행하는 경우에는 Database와 connection을 생성하는 과정 자체가 비용이 많이 들고, 시간이 많</description>
+    </item>
+    
+    <item>
       <title>React 구조 디자인 메뉴얼에 대하여</title>
       <link>https://imsirius.dev/post/220826/react-%EA%B5%AC%EC%A1%B0-%EB%94%94%EC%9E%90%EC%9D%B8-%EB%A9%94%EB%89%B4%EC%96%BC%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/</link>
       <pubDate>Fri, 26 Aug 2022 13:13:42 +0900</pubDate>
