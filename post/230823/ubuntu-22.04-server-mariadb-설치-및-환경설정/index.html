@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Ubuntu 22.04 Server MariaDB 설치 및 환경설정 - IM SIRIUS</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="Ubuntu 22.04 Server MariaDB 설치 및 환경설정" />
+<meta property="og:description" content="본문은 Ubuntu-Server 22.04.3 LTS version 환경을 바탕으로 작성한 글이며, 혹시나 잘못된 부분이 있다면 과감하게 댓글 남겨주시면 감사하겠습니다. 안녕하세요. Heon입니다. 이번 포스" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://imsirius.dev/post/230823/ubuntu-22.04-server-mariadb-%EC%84%A4%EC%B9%98-%EB%B0%8F-%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-08-23T13:35:44+09:00" />
+<meta property="article:modified_time" content="2023-08-23T13:35:44+09:00" />
+
+		<meta itemprop="name" content="Ubuntu 22.04 Server MariaDB 설치 및 환경설정">
+<meta itemprop="description" content="본문은 Ubuntu-Server 22.04.3 LTS version 환경을 바탕으로 작성한 글이며, 혹시나 잘못된 부분이 있다면 과감하게 댓글 남겨주시면 감사하겠습니다. 안녕하세요. Heon입니다. 이번 포스"><meta itemprop="datePublished" content="2023-08-23T13:35:44+09:00" />
+<meta itemprop="dateModified" content="2023-08-23T13:35:44+09:00" />
+<meta itemprop="wordCount" content="2520">
+<meta itemprop="keywords" content="raspberrypi,linux,ubuntu," />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXM711QKT0"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-FXM711QKT0', { 'anonymize_ip': false });
+}
+</script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo logo--mixed">
+		<a class="logo__link" href="/" title="I&#39;m Sirius" rel="home">
+			<div class="logo__item logo__imagebox">
+					<img class="logo__img" src="/img/main_profile.jpg">
+				</div><div class="logo__item logo__text">
+					<div class="logo__title">I&#39;m Sirius</div>
+					<div class="logo__tagline">생각을 추상화</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">
+				
+				<span class="menu__text">About Me</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Ubuntu 22.04 Server MariaDB 설치 및 환경설정</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-08-23T13:35:44&#43;09:00">August 23, 2023</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/linux/" rel="category">linux</a>
+	</span>
+</div></div>
+		</header>
+		
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#-1-apt-mariadb-server-package-install">📦️ 1. apt mariadb-server package install</a></li>
+    <li><a href="#-2-데이터베이스-보안-설정mariadb-secure-installation">🔒 2. 데이터베이스 보안 설정(mariadb-secure-installation)</a></li>
+    <li><a href="#-3-테이블-대소문자-구분-설정-해제-및-기본-포트-변경">🗃 3. 테이블 대소문자 구분 설정 해제 및 기본 포트 변경</a>
+      <ul>
+        <li><a href="#31-데이터베이스-설정-파일-수정">3.1 데이터베이스 설정 파일 수정</a></li>
+        <li><a href="#32-서비스-재시작">3.2 서비스 재시작</a></li>
+        <li><a href="#33-port-확인">3.3 port 확인</a></li>
+        <li><a href="#34-lower_case_table_names-확인">3.4 lower_case_table_names 확인</a></li>
+      </ul>
+    </li>
+    <li><a href="#-4-ufw-방화벽-활성화">🛂 4. UFW 방화벽 활성화</a>
+      <ul>
+        <li><a href="#41-서비스-파일-조회">4.1 서비스 파일 조회</a></li>
+        <li><a href="#42-포트와-프로토콜을-이용한-방화벽-오픈">4.2 포트와 프로토콜을 이용한 방화벽 오픈</a></li>
+        <li><a href="#4-3-ufw-방화벽-활성화-및-오픈-리스트-확인">4-3. UFW 방화벽 활성화 및 오픈 리스트 확인</a></li>
+      </ul>
+    </li>
+    <li><a href="#-5-데이터베이스-원격-접속-설정-및-접속-계정-생성">🗃️ 5. 데이터베이스 원격 접속 설정 및 접속 계정 생성</a>
+      <ul>
+        <li><a href="#51-데이터베이스-바인딩-주소-변경">5.1 데이터베이스 바인딩 주소 변경</a></li>
+        <li><a href="#52-신규-데이터베이스-생성">5.2 신규 데이터베이스 생성</a></li>
+        <li><a href="#53-사용자-계정-생성-및-권한-부여">5.3 사용자 계정 생성 및 권한 부여</a></li>
+      </ul>
+    </li>
+    <li><a href="#-6-database-source-connection">🗃️ 6. Database Source Connection</a>
+      <ul>
+        <li><a href="#reference">reference</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
+			<blockquote>
+<p>본문은 Ubuntu-Server 22.04.3 LTS version 환경을 바탕으로 작성한 글이며, 혹시나 잘못된 부분이 있다면 과감하게 댓글 남겨주시면 감사하겠습니다.</p>
+</blockquote>
+<hr>
+<p>안녕하세요. <a href="https://velog.io/@sirius506775">Heon</a>입니다. 이번 포스팅은 <a href="https://www.raspberrypi.com/">Raspberry Pi 4 Model B</a>에 설치한 Ubuntu 환경에서 MariaDB를 설치하고, 외부 접속까지 설정하는 방법을 설명합니다.</p>
+<p>최근 제가 참여하고 있는 프로젝트에서 네이버클라우드를 검토하게 되었는데요. 과금을 꺼려하는 저희 팀은 VPC와 AI 모델을 위한 서버도 사용해야하는 상황에서, DB까지는 보유 크레딧으로 온전히 비용 충당이 어렵다고 판단했기 때문에, 대신 개인적으로 보유하고 있는 라즈베리파이 우분투 서버를 db서버로 활용하기로 결정했습니다. 이번 프로젝트을 계기로 제가 겪은 과정을 이번 포스팅에서 여러분들께 공유해보고자 합니다.</p>
+<hr>
+<h1 id="how-to-install-mariadb-in-ubuntu-serverraspberry-pi">How to install MariaDB in Ubuntu Server(Raspberry Pi)</h1>
+<h2 id="-1-apt-mariadb-server-package-install">📦️ 1. apt mariadb-server package install</h2>
+<p><code>$ sudo apt install mariadb-server mariadb-server</code>
+apt로 mariadb-server 패키지를 설치합니다.</p>
+<p><img src="https://velog.velcdn.com/images/sirius506775/post/4b1a1d37-81d3-4279-9bd6-a673eee8d0da/image.png" alt="">
+<code>$ sudo mariadb</code></p>
+<p>설치가 완료된 후에 정상적으로 DB 접속이 되는 것을 확인합니다.</p>
+<p><img src="https://velog.velcdn.com/images/sirius506775/post/af7b21a5-9768-4954-91eb-f2ba2f21ab6a/image.png" alt=""></p>
+<p><code> &gt; status</code>로 db 상세정보 또한 확인할 수 있습니다.
+<img src="https://velog.velcdn.com/images/sirius506775/post/ab0264a9-1da9-4c31-83f4-d3aeb2ea5667/image.png" alt=""></p>
+<hr>
+<h2 id="-2-데이터베이스-보안-설정mariadb-secure-installation">🔒 2. 데이터베이스 보안 설정(mariadb-secure-installation)</h2>
+<p><code>$ sudo mariadb-secure-installation </code></p>
+<p>이제 설치한 데이터베이스의 보안 설정을 실시합니다.</p>
+<p><img src="https://velog.velcdn.com/images/sirius506775/post/f3cf0d2d-caa2-40ac-a27e-ffc717709f63/image.png" alt=""></p>
+<blockquote>
+<ul>
+<li>최초 실행 시 password가 지정되어 있지 않기 때문에 공백으로 enter키를 눌러줍니다.
+<img src="https://velog.velcdn.com/images/sirius506775/post/ef3c8a36-dffa-4b30-a5da-263cbc596b09/image.png" alt=""></li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>unix_socket은 default 값으로 유지하며, root의 새로운 패스워드를 지정해 줍니다. 이후 익명 계정들은 삭제해 줍니다.
+<img src="https://velog.velcdn.com/images/sirius506775/post/1066f8c8-bd00-4ffe-9349-b66dfc939176/image.png" alt="">
+<img src="https://velog.velcdn.com/images/sirius506775/post/ac9e4f53-5644-473f-89dc-4d46e4546857/image.png" alt="">
+<img src="https://velog.velcdn.com/images/sirius506775/post/37f76b2d-7df0-4a3a-939a-3c941d997c1b/image.png" alt=""></li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>root 계정에 원격접속 승인 유무인데 저는 승인하겠습니다.
+<img src="https://velog.velcdn.com/images/sirius506775/post/40e41da8-c477-4a80-952f-0836414d972b/image.png" alt=""></li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>테스트 데이버테이스와 권한정보는 삭제 후, 테이블에 대한 권한 설정을 reload해줍니다.
+<img src="https://velog.velcdn.com/images/sirius506775/post/3269ff93-9795-4c0f-82b9-07c1e19a45ae/image.png" alt="">
+<img src="https://velog.velcdn.com/images/sirius506775/post/0645a294-a3a6-40ec-9bc0-87a90e8c68eb/image.png" alt=""></li>
+</ul>
+</blockquote>
+<p>설정 완료 후 접속이 정상적으로 되는지 확인해봅니다.</p>
+<pre tabindex="0"><code>//관리자 권한으로 DB접속
+$ sudo mariadb
+//일반 계정으로 DB접속
+$ mariadb -uroot -p
+$ password &lt;root 비밀번호&gt;
+</code></pre><p><img src="https://velog.velcdn.com/images/sirius506775/post/2725e11f-8c8d-48af-a4d2-1f7e3ad329ef/image.png" alt="">
+<img src="https://velog.velcdn.com/images/sirius506775/post/7cba2d1b-1b6a-4b0f-afbc-c32b63a84536/image.png" alt=""></p>
+<hr>
+<h2 id="-3-테이블-대소문자-구분-설정-해제-및-기본-포트-변경">🗃 3. 테이블 대소문자 구분 설정 해제 및 기본 포트 변경</h2>
+<p>최초로 mariadb를 설치하면 리눅스 파일 시스템 기본 설정 상 윈도우와는 다르게 테이블 이름이 대소문자를 구분합니다.</p>
+<p>db에 접속해서 <code> &gt; show variables like 'lower_case_table_names';</code> 명령어로 테이블의 대소문자 구분 설정을 확인해보면 default 값이 0임을 확인할 수 있는데요.</p>
+<p><img src="https://velog.velcdn.com/images/sirius506775/post/d67c82d2-c6b4-4283-aa00-5ec6632dfa39/image.png" alt=""></p>
+<p>해당 value의 의미는 다음과 같습니다.</p>
+<table>
+<thead>
+<tr>
+<th>lower_case_table_names</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>테이블 대소문자 구분</td>
+</tr>
+<tr>
+<td>1</td>
+<td>테이블 대소문자 구분 없이 소문자로 저장</td>
+</tr>
+<tr>
+<td>2</td>
+<td>윈도우에서 테이블 대소문자 구분</td>
+</tr>
+</tbody>
+</table>
+<h3 id="31-데이터베이스-설정-파일-수정">3.1 데이터베이스 설정 파일 수정</h3>
+<p>Value 값을 변경하기 위해 데이터베이스 설정 파일을 에디터로 엽니다.</p>
+<p><code>$ sudo vim /etc/mysql/mariadb.conf.d/50- server.cnf</code></p>
+<p>다음로 사용할 포트와 대소문자 구분 설정값을 입력합니다. 이때 &lsquo;port&rsquo;와 &rsquo;lower_case_table_names&rsquo; 속성을 하단에 추가합니다.
+<img src="https://velog.velcdn.com/images/sirius506775/post/0fc4bff0-5d83-4874-8632-7dee05cb1cc1/image.png" alt=""></p>
+<h3 id="32-서비스-재시작">3.2 서비스 재시작</h3>
+<p>설정 파일 저장 후 mariaDB 서비스를 재시작해줍니다.
+<code>$ sudo service mariadb restart</code>
+<img src="https://velog.velcdn.com/images/sirius506775/post/d0bc9b40-5d63-4276-ae4a-e5cf2037adf7/image.png" alt=""></p>
+<h3 id="33-port-확인">3.3 port 확인</h3>
+<p>포트가 정상적으로 변경되었는지 telnet 명령어로 확인해봅니다.
+<code>$ telnet localhost (port)</code>
+<img src="https://velog.velcdn.com/images/sirius506775/post/7e5185fc-1c7a-45cb-8ee5-d025bef2c1c1/image.png" alt=""></p>
+<h3 id="34-lower_case_table_names-확인">3.4 lower_case_table_names 확인</h3>
+<p>대소문자 구분 설정이 1로 잘 변경되었는지 확인합니다.
+<code> &gt; show variables like 'lower_case_table_names';</code>
+<img src="https://velog.velcdn.com/images/sirius506775/post/dd9f7694-9047-45d5-a897-5208d753b4a6/image.png" alt=""></p>
+<hr>
+<h2 id="-4-ufw-방화벽-활성화">🛂 4. UFW 방화벽 활성화</h2>
+<p>ssh 설정 시 방화벽 오픈을 안했다면,utf 방화벽 오픈을 활성화해야합니다.</p>
+<h3 id="41-서비스-파일-조회">4.1 서비스 파일 조회</h3>
+<p><code>$ sudo vi /etc/services</code>
+<img src="https://velog.velcdn.com/images/sirius506775/post/be4a4911-061e-4842-8387-eaeed394d2d5/image.png" alt=""></p>
+<p>설정파일에서 원하는 서비스 검색 후 열고자 하는 방화벽 포트에 부합하는지 확인합니다. 조회해보니 mysql은 3306/tcp인 것을 확인할 수 있습니다.</p>
+<h3 id="42-포트와-프로토콜을-이용한-방화벽-오픈">4.2 포트와 프로토콜을 이용한 방화벽 오픈</h3>
+<p><img src="https://velog.velcdn.com/images/sirius506775/post/91f06e65-0328-4967-a8ce-2bf2d38a87e8/image.png" alt="">
+<code>$ sudo ufw allow 3306/tcp</code></p>
+<p>서비스 파일에서 확인했던 mysql 서비스의 포트와 프로토콜을 지정하여 방화벽을 오픈합니다.</p>
+<pre tabindex="0"><code>$ sudo ufw allow &lt;port&gt;/&lt;optional: protocol&gt;
+//protocol은 생략가능하며 생략 시 tcp와 udp 모두 적용됩니다.
+</code></pre><h4 id="-서비스를-이용한-방화벽-오픈">+ 서비스를 이용한 방화벽 오픈</h4>
+<p><img src="https://velog.velcdn.com/images/sirius506775/post/e9408b02-7feb-40af-a823-4511321503f2/image.png" alt=""></p>
+<p><code>$ sudo ufw allow mysql</code> 명령어로 사용할 mysql 서비스의 방화벽을 오픈할 수도 있습니다. 4.2에서 먼저 포트와 프로토콜로 오픈해주었기 때문에, 해당 방화벽 rule 추가는 skip하는 것을 확인할 수 있네요.
+( 비활성화할 경우에는 <code>$ sudo ufw disable</code> )</p>
+<hr>
+<h3 id="4-3-ufw-방화벽-활성화-및-오픈-리스트-확인">4-3. UFW 방화벽 활성화 및 오픈 리스트 확인</h3>
+<p><code>$ sudo ufw status</code>
+<img src="https://velog.velcdn.com/images/sirius506775/post/b4f39b83-f547-4d8c-8c6f-3d4f5d5f7f9b/image.png" alt="">
+현재 방화벽 상태를 확인해보면 inactive 상태인 것을 알 수 있는데요. 우분투에서 기본적으로 제공하는 방화벽인 UFW(Ubuntu Firewall)은 기본적으로 비활성화 되어 있기 때문에 <code>ufw enable</code> 명령어로 ufw를 활성화해야합니다.</p>
+<blockquote>
+<p>**주의해야할 점 **
+ufw를 활성화하면 방화벽이 작동하기 떄문에 모든 포트가 자동으로 막히게 됩니다. 방화벽 설정을 하지 않고 그대로 종료하면 이후부터 ssh 접근을 못할 수도 있으니 유의하시기 바랍니다.</p>
+</blockquote>
+<p><code>$ sudo ufw enable</code></p>
+<p>ufw 방화벽을 활성화하고 다시 status를 조회하면 active 상태로 변경된 것을 확인할 수 있으며, 아래와 같이 기존에 오픈했던 서비스들에 대한 IPv4 및 IPv6에 대한 방화벽 허용 정책이 적용된 것을 확인할 수 있습니다.
+<img src="https://velog.velcdn.com/images/sirius506775/post/a0b20531-1b50-4db7-b6ff-8a1d605f71ab/image.png" alt=""></p>
+<p><img src="https://velog.velcdn.com/images/sirius506775/post/2faf62cf-378e-43c5-ae83-f1c13145fc4d/image.png" alt=""></p>
+<blockquote>
+<p><code>$ sudo ufw status numbered</code>를 사용하면 방화벽 적용 순서에 맞춰 status를 확인할 수도 있습니다.
+<img src="https://velog.velcdn.com/images/sirius506775/post/2cdc69d7-4e02-4df8-995a-f4b470582bae/image.png" alt=""></p>
+</blockquote>
+<hr>
+<h2 id="-5-데이터베이스-원격-접속-설정-및-접속-계정-생성">🗃️ 5. 데이터베이스 원격 접속 설정 및 접속 계정 생성</h2>
+<h3 id="51-데이터베이스-바인딩-주소-변경">5.1 데이터베이스 바인딩 주소 변경</h3>
+<p><code>$ sudo vim /etc/mysql/mariadb.conf.d/50- server.cnf</code></p>
+<p>원격 접속을 위해서 기존에 에디터로 열었던 데이터베이스 설정 파일에 <strong>bind-address</strong>를 주석처리합니다.</p>
+<p>bind-address 초기 설정인 127.0.0.1은 로컬 주소로만 접속할 수 있는 상태를 뜻하므로, 다른 인터넷 환경에서도 접속할 수 있게 하려면 주석 처리 해야합니다.
+<img src="https://velog.velcdn.com/images/sirius506775/post/977fd64b-e49e-4d0d-8515-994810a42b31/image.png" alt=""></p>
+<p><img src="https://velog.velcdn.com/images/sirius506775/post/82e26b85-b848-433c-be9a-5be3c0e6401a/image.png" alt=""></p>
+<h3 id="52-신규-데이터베이스-생성">5.2 신규 데이터베이스 생성</h3>
+<p>데이터베이스 원격 접속 테스트를 위해 데이터베이스 하나를 새로 생성해봅시다.</p>
+<p><code> &gt; create database &lt;데이터베이스 이름&gt;;</code></p>
+<p><img src="https://velog.velcdn.com/images/sirius506775/post/7db463d2-b921-41bd-af66-7711e48e5943/image.png" alt=""></p>
+<p>데이터베이스에 접속하기 위한 port를 확인해봅니다.
+<code>show global variables like 'port';</code>
+<img src="https://velog.velcdn.com/images/sirius506775/post/1ec87064-eeec-4c68-b4ef-4225941ebd1e/image.png" alt=""></p>
+<h3 id="53-사용자-계정-생성-및-권한-부여">5.3 사용자 계정 생성 및 권한 부여</h3>
+<p><code>&gt; create user '계정'@'접속위치' identified by '패스워드';</code>
+<img src="https://velog.velcdn.com/images/sirius506775/post/1dc7fcf5-9f6e-4e22-b6da-46b656b72b7d/image.png" alt="">
+<code> &gt; grant all privileges on DB이름.테이블 to '계정'@'접속위치';</code>
+<code> &gt; flush privileges;</code>
+<img src="https://velog.velcdn.com/images/sirius506775/post/4edde9e1-32c5-4ea0-aa12-5f282d6aff0c/image.png" alt=""></p>
+<p>이후
+<code>&gt; select user,host from mysql.user;</code> 명령어로 해당 데이터베이스의 세션관리자 계정을 조회해보면 방금 전 생성한 계정을 확인할 수 있습니다.
+<img src="https://velog.velcdn.com/images/sirius506775/post/7bef0c62-8a4d-4ecd-8915-faee8979370f/image.png" alt=""></p>
+<hr>
+<h2 id="-6-database-source-connection">🗃️ 6. Database Source Connection</h2>
+<p>자, 이제 그렇다면 지금까지 세팅한 DB를 직접 연결해봅시다. DB 핸들링을 위한 IDE로 저는 애용하는 JetBrains 사의 <a href="https://www.jetbrains.com/datagrip/?source=google&amp;medium=cpc&amp;campaign=15034927843&amp;term=datagrip&amp;content=555122603676&amp;gad=1&amp;gclid=Cj0KCQjwuZGnBhD1ARIsACxbAVhZtQrk3cs7TxeiYnp-Ggiur7Ikszti8Qd7dy34dbU0nHaSePS34SgaAiW_EALw_wcB">Datagrip</a>을 사용하도록 하겠습니다.( heidiSQL 사용해도 무방 )</p>
+<p><img src="https://velog.velcdn.com/images/sirius506775/post/2910c3c4-62a7-4d20-a63f-f846d2eb752c/image.png" alt=""></p>
+<p>MariaDB 데이터 소스를 생성하고, 접속할 Host과 port, 조금 전에 생성한 user와 password, 그리고 사용할 database 이름을 각각 입력하여 DB Connection을 진행해봅시다.</p>
+<p><img src="blob:https://velog.io/f615b712-bb94-46e8-a33f-c02178558785" alt="업로드중.."></p>
+<p>여기서 Host는 공유기가 할당한 내부 ip인 192.168.x.x가 아닌 <strong>현재 라즈베리파이가 사용하고 있는 공유기의 ip</strong>, 즉 **외부 ip(External IP)**로 접속합니다. 이때 공유기는 <code>포트 포워딩</code>을 필수로 진행하여야합니다.</p>
+<p><img src="blob:https://velog.io/8d502b5f-70d4-4236-af28-7f533083c2ac" alt="업로드중.."></p>
+<blockquote>
+<p><em><strong>Tip</strong></em>
+원격으로 현재 나의 리눅스 서버에 접속할 외부 ip를 알고자한다면, 리눅스 서버 터미널 창에서
+<code>$ curl ifconfig.me</code> 명령어를 입력하면 접속할 외부 ip를 알아낼 수 있습니다.</p>
+</blockquote>
+<p>이제 Test Connection 눌러서 Succeeded 가 표시되면 연결이 완료되었음을 의미합니다.
+콘솔 창을 열어서 <code>&gt; select  now();</code> 를 날려봅시다.
+<img src="blob:https://velog.io/7e254f75-828d-4030-bc4b-f1b1be814c57" alt="업로드중.."></p>
+<p>정상적으로 현재 시간이 출력되는 것을 확인할 수 있습니다. 이로써 DB 생성 및 외부 접속 설정이 완료되었네요.</p>
+<hr>
+<h3 id="reference">reference</h3>
+<ul>
+<li><a href="https://yeopbox.com/%ec%9a%b0%eb%b6%84%ed%88%acubuntu-22-04-server-%eb%b0%a9%ed%99%94%eb%b2%bdufw-%ec%84%a4%ec%a0%95-%eb%b0%a9%eb%b2%95/">https://yeopbox.com/%ec%9a%b0%eb%b6%84%ed%88%acubuntu-22-04-server-%eb%b0%a9%ed%99%94%eb%b2%bdufw-%ec%84%a4%ec%a0%95-%eb%b0%a9%eb%b2%95/</a></li>
+<li><a href="https://velog.io/@whattsup_kim/Ubuntu-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0-">https://velog.io/@whattsup_kim/Ubuntu-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0-</a></li>
+</ul>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/raspberrypi/" rel="tag">raspberrypi</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/linux/" rel="tag">linux</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/ubuntu/" rel="tag">ubuntu</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Dong Heon Lee avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Dong Heon Lee</span>
+	</div>
+	<div class="authorbox__description">
+		John Doe&rsquo;s true identity is unknown. Maybe he is a successful blogger or writer. Nobody knows it.
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/post/230701/raspberry-pi%EC%97%90-ubuntu-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Previous</span>
+			<p class="pager__title">Raspberry Pi에 Ubuntu 설치하기</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/post/my-first-post/" rel="next">
+			<span class="pager__subtitle">Next&thinsp;»</span>
+			<p class="pager__title">첫번째 아티클</p>
+		</a>
+	</div>
+</nav>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH…" value="" name="q" aria-label="SEARCH…">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://imsirius.dev/">
+	</form>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/my-first-post/">첫번째 아티클</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/230911/%EC%83%88%EB%A1%9C%EC%9A%B4-%EB%8F%84%EB%A9%94%EC%9D%B8%EC%9D%84-%EA%B5%AC%EB%A7%A4%ED%96%88%EB%8B%A4/">도메인을 구매했다</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/230910/behave-yourself/">Hugo 블로그로 이전했습니다.</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/230823/ubuntu-22.04-server-mariadb-%EC%84%A4%EC%B9%98-%EB%B0%8F-%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95/">Ubuntu 22.04 Server MariaDB 설치 및 환경설정</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/230701/raspberry-pi%EC%97%90-ubuntu-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/">Raspberry Pi에 Ubuntu 설치하기</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/database/">Database</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble">2</span>
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/db/">DB</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble">1</span>
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/essay/">essay</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble">2</span>
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/git/">git</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble">1</span>
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/linux/">linux</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble">2</span>
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/react/">react</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble">3</span>
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/spring/">Spring</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble">1</span>
+				</li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/database/" title="database">database</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/db/" title="db">db</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/domain/" title="domain">domain</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/githubpages/" title="githubpages">githubpages</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hugo/" title="hugo">hugo</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/namecheap/" title="namecheap">namecheap</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/raspberrypi/" title="raspberrypi">raspberrypi</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/react/" title="react">react</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/spring/" title="spring">spring</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/test/" title="Test">Test</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu/" title="ubuntu">ubuntu</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/usestate/" title="usestate">usestate</a>
+	</div>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">Social</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Instagram" rel="noopener noreferrer" href="https://www.instagram.com/__runner_miel" target="_blank">
+				<svg class="widget-social__link-icon icon icon-instagram" width="24" height="24" viewBox="0 0 256 256"><circle cx="193" cy="59" r="15"/><path fill-rule="evenodd" d="M101 0h54c41 0 58.4 3.9 74.5 17C256.2 37.5 256 74.8 256 97.7v60c0 26.7 0 60.4-26.5 81.4-16 13.4-33.5 16.9-74.5 16.9h-54c-41 0-57.5-3.5-74.5-16.9C1 218.9.5 186.3.1 160.5L0 155V97.7c0-23-.2-60.2 26.5-80.7C45 2 60 0 101 0zm4.9 23h44.3c45.8 0 58.3 3.5 70.3 17.5 11.8 13.2 12 30.1 12.5 62.9V156c.2 20.8.3 45.8-12.5 59.5-12 14-24.5 17.5-70.3 17.5h-44.3c-45.9 0-57.3-3.5-70.4-17.5-12.2-13-12.3-36.5-12.4-56.7v-55.6c.4-32.6.7-49.6 12.4-62.7C48 26.5 60 23 105.9 23zm19.6 144.5a42 42 0 1 0 0-84 42 42 0 0 0 0 84zm0 22.5a64.5 64.5 0 1 0 0-129 64.5 64.5 0 0 0 0 129z"/></svg>
+				<span>Instagram</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/Sirius506775" target="_blank">
+				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Email" href="mailto:leeheon.dev@gmail.com">
+				<svg class="widget-social__link-icon icon icon-mail" width="24" height="24" viewBox="0 0 416 288"><path d="m0 16v256 16h16 384 16v-16-256-16h-16-384-16zm347 16-139 92.5-139-92.5zm-148 125.5 9 5.5 9-5.5 167-111.5v210h-352v-210z"/></svg>
+				<span>leeheon.dev@gmail.com</span>
+			</a>
+		</div>
+
+		
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 IM SIRIUS.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

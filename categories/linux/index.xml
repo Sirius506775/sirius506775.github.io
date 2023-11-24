@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on IM SIRIUS</title>
+    <link>https://imsirius.dev/categories/linux/</link>
+    <description>Recent content in linux on IM SIRIUS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 23 Aug 2023 13:35:44 +0900</lastBuildDate><atom:link href="https://imsirius.dev/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ubuntu 22.04 Server MariaDB 설치 및 환경설정</title>
+      <link>https://imsirius.dev/post/230823/ubuntu-22.04-server-mariadb-%EC%84%A4%EC%B9%98-%EB%B0%8F-%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95/</link>
+      <pubDate>Wed, 23 Aug 2023 13:35:44 +0900</pubDate>
+      
+      <guid>https://imsirius.dev/post/230823/ubuntu-22.04-server-mariadb-%EC%84%A4%EC%B9%98-%EB%B0%8F-%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95/</guid>
+      <description>본문은 Ubuntu-Server 22.04.3 LTS version 환경을 바탕으로 작성한 글이며, 혹시나 잘못된 부분이 있다면 과감하게 댓글 남겨주시면 감사하겠습니다. 안녕하세요. Heon입니다. 이번 포스</description>
+    </item>
+    
+    <item>
+      <title>Raspberry Pi에 Ubuntu 설치하기</title>
+      <link>https://imsirius.dev/post/230701/raspberry-pi%EC%97%90-ubuntu-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/</link>
+      <pubDate>Sat, 01 Jul 2023 13:32:49 +0900</pubDate>
+      
+      <guid>https://imsirius.dev/post/230701/raspberry-pi%EC%97%90-ubuntu-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/</guid>
+      <description>백엔드 공부 시에 항시 운영되는 외부 서버와의 통신 환경과 서버 구축 단계를 학습! 하기 위해 라즈베리 파이를 구매햇다. 라즈베리파이에 우분투 서버를 설치해보고자 한</description>
+    </item>
+    
+  </channel>
+</rss>

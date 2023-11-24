@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>react on IM SIRIUS</title>
+    <link>https://imsirius.dev/categories/react/</link>
+    <description>Recent content in react on IM SIRIUS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 26 Aug 2022 13:13:42 +0900</lastBuildDate><atom:link href="https://imsirius.dev/categories/react/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>React 구조 디자인 메뉴얼에 대하여</title>
+      <link>https://imsirius.dev/post/220826/react-%EA%B5%AC%EC%A1%B0-%EB%94%94%EC%9E%90%EC%9D%B8-%EB%A9%94%EB%89%B4%EC%96%BC/</link>
+      <pubDate>Fri, 26 Aug 2022 13:13:42 +0900</pubDate>
+      
+      <guid>https://imsirius.dev/post/220826/react-%EA%B5%AC%EC%A1%B0-%EB%94%94%EC%9E%90%EC%9D%B8-%EB%A9%94%EB%89%B4%EC%96%BC/</guid>
+      <description>react는 Dom이 아닌 JavaScript를 중심으로 생각한다. =&amp;gt; 이 패러다임을 받아들여야한다. 더 효과적인 컴포넌트를 구성하는 방법 아토믹 디자인은</description>
+    </item>
+    
+    <item>
+      <title>[React] Input 태그는 어떻게 사용해야할까</title>
+      <link>https://imsirius.dev/post/220826/react-input-%ED%83%9C%EA%B7%B8-%EC%82%AC%EC%9A%A9%EB%B2%95/</link>
+      <pubDate>Fri, 26 Aug 2022 13:10:16 +0900</pubDate>
+      
+      <guid>https://imsirius.dev/post/220826/react-input-%ED%83%9C%EA%B7%B8-%EC%82%AC%EC%9A%A9%EB%B2%95/</guid>
+      <description>React에서 input태그를 사용하는 방법 input태그는 사용자가 입력을 해도 컴포넌트가 변하지 않습니다. re-rendering이 일어나지 않습</description>
+    </item>
+    
+    <item>
+      <title>[React] useState Hook을 사용해보자</title>
+      <link>https://imsirius.dev/post/220823/react%EC%9D%98-usestate/</link>
+      <pubDate>Tue, 23 Aug 2022 16:46:28 +0900</pubDate>
+      
+      <guid>https://imsirius.dev/post/220823/react%EC%9D%98-usestate/</guid>
+      <description>useState Hook 리액트의 컴포넌트가 re-rendering 하는 조건 중 하나는 컴포넌트 안에 있는 state가 변경되었을 경우입니다. useState는 리액트가 컴포넌트들을 모니터링하기</description>
+    </item>
+    
+  </channel>
+</rss>

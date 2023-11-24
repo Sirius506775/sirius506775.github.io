@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Database on IM SIRIUS</title>
+    <link>https://imsirius.dev/categories/database/</link>
+    <description>Recent content in Database on IM SIRIUS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 28 May 2023 00:10:04 +0900</lastBuildDate><atom:link href="https://imsirius.dev/categories/database/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>어떤 쿼리가 전체범위 처리일까</title>
+      <link>https://imsirius.dev/post/230528/%EC%96%B4%EB%96%A4-%EC%BF%BC%EB%A6%AC%EA%B0%80-%EC%A0%84%EC%B2%B4%EB%B2%94%EC%9C%84-%EC%B2%98%EB%A6%AC%EC%9D%BC%EA%B9%8C/</link>
+      <pubDate>Sun, 28 May 2023 00:10:04 +0900</pubDate>
+      
+      <guid>https://imsirius.dev/post/230528/%EC%96%B4%EB%96%A4-%EC%BF%BC%EB%A6%AC%EA%B0%80-%EC%A0%84%EC%B2%B4%EB%B2%94%EC%9C%84-%EC%B2%98%EB%A6%AC%EC%9D%BC%EA%B9%8C/</guid>
+      <description>전체범위 처리와 부분범위 처리 자, 아래 쿼리는 전체범위 처리가 될지, 부분 범위 처리가 될지 한 번 생각해보자. select ** from table 이 쿼리는 테이블 전체를 다 읽어오니까 당연히</description>
+    </item>
+    
+    <item>
+      <title>Connection Pool(feat. HikariCP)</title>
+      <link>https://imsirius.dev/post/230217/connection-pool/</link>
+      <pubDate>Fri, 17 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://imsirius.dev/post/230217/connection-pool/</guid>
+      <description>대규모의 사용자가 DB연결을 반복하는 플랫폼을 실행하는 경우에는 Database와 connection을 생성하는 과정 자체가 비용이 많이 들고, 시간이 많</description>
+    </item>
+    
+  </channel>
+</rss>

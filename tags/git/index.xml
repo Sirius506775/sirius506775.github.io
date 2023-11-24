@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on IM SIRIUS</title>
+    <link>https://imsirius.dev/tags/git/</link>
+    <description>Recent content in git on IM SIRIUS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 18 Jun 2023 13:29:38 +0900</lastBuildDate><atom:link href="https://imsirius.dev/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Subtree를 이용한 프로젝트 관리</title>
+      <link>https://imsirius.dev/post/230618/subtree%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B4%80%EB%A6%AC/</link>
+      <pubDate>Sun, 18 Jun 2023 13:29:38 +0900</pubDate>
+      
+      <guid>https://imsirius.dev/post/230618/subtree%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B4%80%EB%A6%AC/</guid>
+      <description>Git Subtree(이하 서브트리)는 SHA 값만 저장하는 서브모듈과 달리 상위 저장소에 파일을 직접 추가하고 트래킹한다. 서브트리의 파일 및 변경사항도 상위 저장소</description>
+    </item>
+    
+  </channel>
+</rss>

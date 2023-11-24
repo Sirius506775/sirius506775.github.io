@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>essay on IM SIRIUS</title>
+    <link>https://imsirius.dev/categories/essay/</link>
+    <description>Recent content in essay on IM SIRIUS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 12 Sep 2023 03:52:49 +0900</lastBuildDate><atom:link href="https://imsirius.dev/categories/essay/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>도메인을 구매했다</title>
+      <link>https://imsirius.dev/essay/230911/%EC%83%88%EB%A1%9C%EC%9A%B4-%EB%8F%84%EB%A9%94%EC%9D%B8%EC%9D%84-%EA%B5%AC%EB%A7%A4%ED%96%88%EB%8B%A4/</link>
+      <pubDate>Tue, 12 Sep 2023 03:52:49 +0900</pubDate>
+      
+      <guid>https://imsirius.dev/essay/230911/%EC%83%88%EB%A1%9C%EC%9A%B4-%EB%8F%84%EB%A9%94%EC%9D%B8%EC%9D%84-%EA%B5%AC%EB%A7%A4%ED%96%88%EB%8B%A4/</guid>
+      <description>github.io말고 다른거 저는 개인적으로 초반부터 열정이 불타오르는 타입인데, 이번에 만드는 hugo 블로그는 줄곧 가지고 싶었던 .dev 도메인을 구매하기로 결정했</description>
+    </item>
+    
+    <item>
+      <title>Hugo 블로그로 이전했습니다.</title>
+      <link>https://imsirius.dev/essay/230910/behave-yourself/</link>
+      <pubDate>Sun, 10 Sep 2023 04:38:41 +0900</pubDate>
+      
+      <guid>https://imsirius.dev/essay/230910/behave-yourself/</guid>
+      <description>기술블로그를 Velog에서 github.io로 이전한다. Tistory와 Jekyll, Oopy를 전전하다가 Velog로 정착했었던 까닭은 아티클 생성이 Markdown 문법</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Raspberry Pi에 Ubuntu 설치하기 - IM SIRIUS</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="Raspberry Pi에 Ubuntu 설치하기" />
+<meta property="og:description" content="백엔드 공부 시에 항시 운영되는 외부 서버와의 통신 환경과 서버 구축 단계를 학습! 하기 위해 라즈베리 파이를 구매햇다. 라즈베리파이에 우분투 서버를 설치해보고자 한" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://imsirius.dev/post/230701/raspberry-pi%EC%97%90-ubuntu-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-07-01T13:32:49+09:00" />
+<meta property="article:modified_time" content="2023-07-01T13:32:49+09:00" />
+
+		<meta itemprop="name" content="Raspberry Pi에 Ubuntu 설치하기">
+<meta itemprop="description" content="백엔드 공부 시에 항시 운영되는 외부 서버와의 통신 환경과 서버 구축 단계를 학습! 하기 위해 라즈베리 파이를 구매햇다. 라즈베리파이에 우분투 서버를 설치해보고자 한"><meta itemprop="datePublished" content="2023-07-01T13:32:49+09:00" />
+<meta itemprop="dateModified" content="2023-07-01T13:32:49+09:00" />
+<meta itemprop="wordCount" content="782">
+<meta itemprop="keywords" content="raspberrypi,linux,ubuntu," />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXM711QKT0"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-FXM711QKT0', { 'anonymize_ip': false });
+}
+</script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo logo--mixed">
+		<a class="logo__link" href="/" title="I&#39;m Sirius" rel="home">
+			<div class="logo__item logo__imagebox">
+					<img class="logo__img" src="/img/main_profile.jpg">
+				</div><div class="logo__item logo__text">
+					<div class="logo__title">I&#39;m Sirius</div>
+					<div class="logo__tagline">생각을 추상화</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">
+				
+				<span class="menu__text">About Me</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Raspberry Pi에 Ubuntu 설치하기</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-07-01T13:32:49&#43;09:00">July 01, 2023</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/linux/" rel="category">linux</a>
+	</span>
+</div></div>
+		</header>
+		
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-sd-card-format">1. sd card format</a></li>
+        <li><a href="#2-라즈베리-파이-imager-다운로드">2. 라즈베리 파이 imager 다운로드</a></li>
+        <li><a href="#3-기기-연결-후-네트워크-설정">3. 기기 연결 후 네트워크 설정</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
+			<p>백엔드 공부 시에 항시 운영되는 외부 서버와의 통신 환경과 서버 구축 단계를 학습!
+하기 위해 라즈베리 파이를 구매햇다.
+라즈베리파이에 우분투 서버를 설치해보고자 한다.</p>
+<p><img src="https://velog.velcdn.com/images/sirius506775/post/dd62b4f9-c58f-4556-ad2c-7963a7c1eb93/image.jpg" alt=""></p>
+<p>제품 구성 :</p>
+<ul>
+<li>Raspberry Pi 4 Model B 4GB RAM</li>
+<li>SD Card 64GB</li>
+</ul>
+<h3 id="1-sd-card-format">1. sd card format</h3>
+<p>운영체제를 설치하기 전에 sd card format을 진행한다.</p>
+<p>라즈베리파이의 부트로더는 FAT16, FAT32 등의 FAT 파일 시스템을 사용하기 때문에 format을 두 번 진행한다.</p>
+<h4 id="11-sd-card-formatter-설치-및-실행">1.1 sd card Formatter 설치 및 실행</h4>
+<p><a href="https://www.sdcard.org/downloads/formatter/">SD Association</a> 사이트에 접속해서 다운로드한다. 필자는 windows 환경임
+<img src="https://velog.velcdn.com/images/sirius506775/post/737edd7d-2386-4712-ac98-7821c6bcd300/image.png" alt="">
+<img src="https://velog.velcdn.com/images/sirius506775/post/343d8e2a-3100-4dd9-b024-955eee74a5e9/image.png" alt=""></p>
+<h4 id="12-sd카드를-인식하고-formatter를-실행한다">1.2 sd카드를 인식하고, formatter를 실행한다.</h4>
+<p><img src="https://velog.velcdn.com/images/sirius506775/post/90aa401a-c25a-431c-8fb2-f5ea2509655b/image.png" alt=""></p>
+<p>포맷할 sd 카드 경로를 지정하고 포맷한다.
+<img src="https://velog.velcdn.com/images/sirius506775/post/287c251e-7cd2-4f88-9514-40671ff2e785/image.png" alt="">
+<img src="https://velog.velcdn.com/images/sirius506775/post/a87d4035-50d7-433d-b31f-2d8371f225d0/image.png" alt=""></p>
+<p>포맷 완료 화면에서 File System이 FAT32라면 그대로 진행해도 되지만,
+만약 &rsquo;exFAT&rsquo;인 경우는 변경을 해줘야한다.
+<img src="https://velog.velcdn.com/images/sirius506775/post/513da4f8-88f5-44bb-92b2-cbbd5e8509ae/image.png" alt=""></p>
+<p><a href="http://ridgecrop.co.uk/index.htm?guiformat.htm">FAT32 Format</a>으로 File System을 FAT32로 변경한다.
+<img src="https://velog.velcdn.com/images/sirius506775/post/a65c84ea-2b48-4cef-9771-ce4942faa859/image.png" alt=""></p>
+<blockquote>
+<p>Volume label을 적어주지 않으면 에러가 발생할 수 있다.</p>
+</blockquote>
+<p><img src="https://velog.velcdn.com/images/sirius506775/post/f4866146-23ef-4ef2-93bd-4816023c1230/image.png" alt=""></p>
+<p>파일 시스템을 확인해보면 FAT32 형식으로 변경되어있는 것을 확인할 수 있다.</p>
+<p><img src="https://velog.velcdn.com/images/sirius506775/post/5fe074e9-8af2-413f-b0db-187b8afde04a/image.png" alt=""></p>
+<h3 id="2-라즈베리-파이-imager-다운로드">2. 라즈베리 파이 imager 다운로드</h3>
+<p><img src="https://velog.velcdn.com/images/sirius506775/post/3ba720b3-b52a-4e5d-bb6c-56b9b265106e/image.png" alt=""></p>
+<ol start="2">
+<li>
+<p>설치 후 실행
+<img src="https://velog.velcdn.com/images/sirius506775/post/3f1558a5-9923-4003-8dfc-02112f1bcdbf/image.png" alt="">
+<img src="https://velog.velcdn.com/images/sirius506775/post/4d7a5643-a097-405a-95fa-6631b5427066/image.png" alt=""></p>
+</li>
+<li>
+<p>운영체제 선택
+<img src="https://velog.velcdn.com/images/sirius506775/post/922df18e-7a4e-4cc0-8570-bfc5a67e949f/image.png" alt=""></p>
+</li>
+</ol>
+<p>Ubuntu 이미지 파일을 조금전에 포맷한 sd카드에 로딩하여 부팅 디스크로 만들어준다.</p>
+<p><del>desktop LTS 버젼으로 난 할거임</del></p>
+<p>( 23.08.22 : gui 땜에 그냥 server로 다시 깔거임 헤헤_)</p>
+<p><img src="https://velog.velcdn.com/images/sirius506775/post/6935633b-fd81-4454-9022-24abe805a34a/image.png" alt=""></p>
+<p>sd 카드를 스토리지로 지정하고
+<img src="https://velog.velcdn.com/images/sirius506775/post/cf634ad2-82f1-4b95-9a37-fe9999d4d3fd/image.png" alt="">
+<img src="https://velog.velcdn.com/images/sirius506775/post/a9e9f2ff-624c-48a5-aeab-ff1106d2a38a/image.png" alt="">
+<img src="https://velog.velcdn.com/images/sirius506775/post/6f78a354-de84-4c5d-ada7-c9a3cc28bfc9/image.png" alt=""></p>
+<p>시간이 꽤 걸린당
+<img src="https://velog.velcdn.com/images/sirius506775/post/89f334d3-e798-499b-a6bb-c74f48f0f748/image.png" alt=""></p>
+<p><img src="https://velog.velcdn.com/images/sirius506775/post/1c1c083d-e990-413d-be23-3d38eb2e51f6/image.png" alt=""></p>
+<p>완료가 되면 sd 카드를 pc에서 제거한다.</p>
+<h3 id="3-기기-연결-후-네트워크-설정">3. 기기 연결 후 네트워크 설정</h3>
+<p><del>&hellip;.근데 미국에서 직구한거라
+전압&hellip;돼지코 사러 가야겟다..ㅜ 사와서 다시 이어서 포스팅..</del>
+<img src="https://velog.velcdn.com/images/sirius506775/post/22b70a4a-5106-4e88-9ba5-6c8638fa2e3a/image.jpg" alt=""></p>
+<p>우분투 로딩한 sd카드를 기존에 조립해놓은 라즈베리파이 기기에 연결한다. 조립하는 방식은 자세한 설명서가 없어서 <a href="https://www.youtube.com/watch?v=dB9BDq8C3qY">영상</a>보고 그대로 따라했음. 매우 쉽습니다</p>
+<p><img src="https://velog.velcdn.com/images/sirius506775/post/5e1854e2-ffc5-453b-9e55-301d9dab1a58/image.jpg" alt=""></p>
+<p>모니터 연결하고 로딩이 완료되면 안내에 따라서 os 설정을 진행하면 됩니당
+<img src="https://velog.velcdn.com/images/sirius506775/post/f071f515-6db8-4b3b-80ea-6fb60ed366f3/image.jpg" alt=""></p>
+<p>우분투 환경 설치 끝! 다음 포스팅은 진짜 웹서버 구축을 시작해보자
+<img src="https://velog.velcdn.com/images/sirius506775/post/5cecaf49-9264-4a14-8d66-92766d1bdcf9/image.jpg" alt=""></p>
+<h4 id="-reference">* reference</h4>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=cxhctYvQomY">How To Install Raspbian OS On The Raspberry Pi 4</a></li>
+<li><a href="https://post.naver.com/viewer/postView.nhn?volumeNo=31531516&amp;memberNo=2534901">Raspberry Pi 와 PC Serial 통신</a></li>
+<li><a href="https://blog.may-i.io/tech-7/">라즈베리파이에 Ubuntu 20.04 LTS 설치하기</a></li>
+<li><a href="https://ryan-han.com/post/dev/raspberry_server_1/">라즈베리파이4로 토이프로젝트용 서버 만들기 - 1편</a></li>
+<li><a href="https://www.youtube.com/watch?v=dB9BDq8C3qY">Raspberry Pi 4 NEEDS A FAN - How to Install CanaKit Heatsink and Fan</a></li>
+</ul>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/raspberrypi/" rel="tag">raspberrypi</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/linux/" rel="tag">linux</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/ubuntu/" rel="tag">ubuntu</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Dong Heon Lee avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Dong Heon Lee</span>
+	</div>
+	<div class="authorbox__description">
+		John Doe&rsquo;s true identity is unknown. Maybe he is a successful blogger or writer. Nobody knows it.
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/post/230618/subtree%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B4%80%EB%A6%AC/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Previous</span>
+			<p class="pager__title">Subtree를 이용한 프로젝트 관리</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/post/230823/ubuntu-22.04-server-mariadb-%EC%84%A4%EC%B9%98-%EB%B0%8F-%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95/" rel="next">
+			<span class="pager__subtitle">Next&thinsp;»</span>
+			<p class="pager__title">Ubuntu 22.04 Server MariaDB 설치 및 환경설정</p>
+		</a>
+	</div>
+</nav>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH…" value="" name="q" aria-label="SEARCH…">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://imsirius.dev/">
+	</form>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/my-first-post/">첫번째 아티클</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/230911/%EC%83%88%EB%A1%9C%EC%9A%B4-%EB%8F%84%EB%A9%94%EC%9D%B8%EC%9D%84-%EA%B5%AC%EB%A7%A4%ED%96%88%EB%8B%A4/">도메인을 구매했다</a></li>
+			<li class="widget__item"><a class="widget__link" href="/essay/230910/behave-yourself/">Hugo 블로그로 이전했습니다.</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/230823/ubuntu-22.04-server-mariadb-%EC%84%A4%EC%B9%98-%EB%B0%8F-%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95/">Ubuntu 22.04 Server MariaDB 설치 및 환경설정</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/230701/raspberry-pi%EC%97%90-ubuntu-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/">Raspberry Pi에 Ubuntu 설치하기</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/database/">Database</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble">2</span>
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/db/">DB</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble">1</span>
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/essay/">essay</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble">2</span>
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/git/">git</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble">1</span>
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/linux/">linux</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble">2</span>
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/react/">react</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble">3</span>
+				</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/spring/">Spring</a>&nbsp;
+				<span class="widget__counter widget__counter--bubble">1</span>
+				</li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/database/" title="database">database</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/db/" title="db">db</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/domain/" title="domain">domain</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/githubpages/" title="githubpages">githubpages</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hugo/" title="hugo">hugo</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/namecheap/" title="namecheap">namecheap</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/raspberrypi/" title="raspberrypi">raspberrypi</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/react/" title="react">react</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/spring/" title="spring">spring</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/test/" title="Test">Test</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu/" title="ubuntu">ubuntu</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/usestate/" title="usestate">usestate</a>
+	</div>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">Social</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Instagram" rel="noopener noreferrer" href="https://www.instagram.com/__runner_miel" target="_blank">
+				<svg class="widget-social__link-icon icon icon-instagram" width="24" height="24" viewBox="0 0 256 256"><circle cx="193" cy="59" r="15"/><path fill-rule="evenodd" d="M101 0h54c41 0 58.4 3.9 74.5 17C256.2 37.5 256 74.8 256 97.7v60c0 26.7 0 60.4-26.5 81.4-16 13.4-33.5 16.9-74.5 16.9h-54c-41 0-57.5-3.5-74.5-16.9C1 218.9.5 186.3.1 160.5L0 155V97.7c0-23-.2-60.2 26.5-80.7C45 2 60 0 101 0zm4.9 23h44.3c45.8 0 58.3 3.5 70.3 17.5 11.8 13.2 12 30.1 12.5 62.9V156c.2 20.8.3 45.8-12.5 59.5-12 14-24.5 17.5-70.3 17.5h-44.3c-45.9 0-57.3-3.5-70.4-17.5-12.2-13-12.3-36.5-12.4-56.7v-55.6c.4-32.6.7-49.6 12.4-62.7C48 26.5 60 23 105.9 23zm19.6 144.5a42 42 0 1 0 0-84 42 42 0 0 0 0 84zm0 22.5a64.5 64.5 0 1 0 0-129 64.5 64.5 0 0 0 0 129z"/></svg>
+				<span>Instagram</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/Sirius506775" target="_blank">
+				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Email" href="mailto:leeheon.dev@gmail.com">
+				<svg class="widget-social__link-icon icon icon-mail" width="24" height="24" viewBox="0 0 416 288"><path d="m0 16v256 16h16 384 16v-16-256-16h-16-384-16zm347 16-139 92.5-139-92.5zm-148 125.5 9 5.5 9-5.5 167-111.5v210h-352v-210z"/></svg>
+				<span>leeheon.dev@gmail.com</span>
+			</a>
+		</div>
+
+		
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 IM SIRIUS.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>
