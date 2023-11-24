@@ -6,27 +6,9 @@
     <description>Recent content in Categories on IM SIRIUS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://imsirius.dev/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Sep 2023 03:52:49 +0900</lastBuildDate><atom:link href="https://imsirius.dev/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>DB</title>
-      <link>https://imsirius.dev/categories/db/</link>
-      <pubDate>Thu, 23 Nov 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://imsirius.dev/categories/db/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Spring</title>
-      <link>https://imsirius.dev/categories/spring/</link>
-      <pubDate>Thu, 23 Nov 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://imsirius.dev/categories/spring/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>essay</title>
+      <title>Essay</title>
       <link>https://imsirius.dev/categories/essay/</link>
       <pubDate>Tue, 12 Sep 2023 03:52:49 +0900</pubDate>
       
@@ -35,7 +17,7 @@
     </item>
     
     <item>
-      <title>linux</title>
+      <title>Linux</title>
       <link>https://imsirius.dev/categories/linux/</link>
       <pubDate>Wed, 23 Aug 2023 13:35:44 +0900</pubDate>
       
@@ -44,7 +26,7 @@
     </item>
     
     <item>
-      <title>git</title>
+      <title>Git</title>
       <link>https://imsirius.dev/categories/git/</link>
       <pubDate>Sun, 18 Jun 2023 13:29:38 +0900</pubDate>
       
@@ -62,7 +44,7 @@
     </item>
     
     <item>
-      <title>react</title>
+      <title>React</title>
       <link>https://imsirius.dev/categories/react/</link>
       <pubDate>Fri, 26 Aug 2022 13:13:42 +0900</pubDate>
       

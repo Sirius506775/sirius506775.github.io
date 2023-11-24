@@ -6,16 +6,7 @@
     <description>Recent content in Tags on IM SIRIUS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://imsirius.dev/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Test</title>
-      <link>https://imsirius.dev/tags/test/</link>
-      <pubDate>Thu, 23 Nov 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://imsirius.dev/tags/test/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Tue, 12 Sep 2023 03:52:49 +0900</lastBuildDate><atom:link href="https://imsirius.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>domain</title>
       <link>https://imsirius.dev/tags/domain/</link>
@@ -98,38 +89,11 @@
     </item>
     
     <item>
-      <title>database</title>
-      <link>https://imsirius.dev/tags/database/</link>
-      <pubDate>Fri, 17 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://imsirius.dev/tags/database/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>spring</title>
-      <link>https://imsirius.dev/tags/spring/</link>
-      <pubDate>Fri, 17 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://imsirius.dev/tags/spring/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>react</title>
       <link>https://imsirius.dev/tags/react/</link>
       <pubDate>Fri, 26 Aug 2022 13:13:42 +0900</pubDate>
       
       <guid>https://imsirius.dev/tags/react/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>usestate</title>
-      <link>https://imsirius.dev/tags/usestate/</link>
-      <pubDate>Tue, 23 Aug 2022 16:46:28 +0900</pubDate>
-      
-      <guid>https://imsirius.dev/tags/usestate/</guid>
       <description></description>
     </item>
     

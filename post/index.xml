@@ -6,16 +6,7 @@
     <description>Recent content in Posts on IM SIRIUS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://imsirius.dev/post/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>첫번째 아티클</title>
-      <link>https://imsirius.dev/post/my-first-post/</link>
-      <pubDate>Thu, 23 Nov 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://imsirius.dev/post/my-first-post/</guid>
-      <description>국회는 상호원조 또는 안전보장에 관한 조약, 중요한 국제조직에 관한 조약, 우호통상항해조약, 주권의 제약에 관한 조약, 강화조약, 국가나 국민에게 중대한 재정적</description>
-    </item>
-    
+    <lastBuildDate>Wed, 23 Aug 2023 13:35:44 +0900</lastBuildDate><atom:link href="https://imsirius.dev/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ubuntu 22.04 Server MariaDB 설치 및 환경설정</title>
       <link>https://imsirius.dev/post/230823/ubuntu-22.04-server-mariadb-%EC%84%A4%EC%B9%98-%EB%B0%8F-%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95/</link>
@@ -53,38 +44,29 @@
     </item>
     
     <item>
-      <title>Connection Pool(feat. HikariCP)</title>
-      <link>https://imsirius.dev/post/230217/connection-pool/</link>
-      <pubDate>Fri, 17 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://imsirius.dev/post/230217/connection-pool/</guid>
-      <description>대규모의 사용자가 DB연결을 반복하는 플랫폼을 실행하는 경우에는 Database와 connection을 생성하는 과정 자체가 비용이 많이 들고, 시간이 많</description>
-    </item>
-    
-    <item>
       <title>React 구조 디자인 메뉴얼에 대하여</title>
-      <link>https://imsirius.dev/post/220826/react-%EA%B5%AC%EC%A1%B0-%EB%94%94%EC%9E%90%EC%9D%B8-%EB%A9%94%EB%89%B4%EC%96%BC/</link>
+      <link>https://imsirius.dev/post/220826/react-%EA%B5%AC%EC%A1%B0-%EB%94%94%EC%9E%90%EC%9D%B8-%EB%A9%94%EB%89%B4%EC%96%BC%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/</link>
       <pubDate>Fri, 26 Aug 2022 13:13:42 +0900</pubDate>
       
-      <guid>https://imsirius.dev/post/220826/react-%EA%B5%AC%EC%A1%B0-%EB%94%94%EC%9E%90%EC%9D%B8-%EB%A9%94%EB%89%B4%EC%96%BC/</guid>
+      <guid>https://imsirius.dev/post/220826/react-%EA%B5%AC%EC%A1%B0-%EB%94%94%EC%9E%90%EC%9D%B8-%EB%A9%94%EB%89%B4%EC%96%BC%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/</guid>
       <description>react는 Dom이 아닌 JavaScript를 중심으로 생각한다. =&amp;gt; 이 패러다임을 받아들여야한다. 더 효과적인 컴포넌트를 구성하는 방법 아토믹 디자인은</description>
     </item>
     
     <item>
-      <title>[React] Input 태그는 어떻게 사용해야할까</title>
-      <link>https://imsirius.dev/post/220826/react-input-%ED%83%9C%EA%B7%B8-%EC%82%AC%EC%9A%A9%EB%B2%95/</link>
+      <title>React에서 Input 태그는 어떻게 사용해야할까</title>
+      <link>https://imsirius.dev/post/220826/react%EC%97%90%EC%84%9C-input-%ED%83%9C%EA%B7%B8%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EC%82%AC%EC%9A%A9%ED%95%B4%EC%95%BC%ED%95%A0%EA%B9%8C/</link>
       <pubDate>Fri, 26 Aug 2022 13:10:16 +0900</pubDate>
       
-      <guid>https://imsirius.dev/post/220826/react-input-%ED%83%9C%EA%B7%B8-%EC%82%AC%EC%9A%A9%EB%B2%95/</guid>
+      <guid>https://imsirius.dev/post/220826/react%EC%97%90%EC%84%9C-input-%ED%83%9C%EA%B7%B8%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EC%82%AC%EC%9A%A9%ED%95%B4%EC%95%BC%ED%95%A0%EA%B9%8C/</guid>
       <description>React에서 input태그를 사용하는 방법 input태그는 사용자가 입력을 해도 컴포넌트가 변하지 않습니다. re-rendering이 일어나지 않습</description>
     </item>
     
     <item>
-      <title>[React] useState Hook을 사용해보자</title>
-      <link>https://imsirius.dev/post/220823/react%EC%9D%98-usestate/</link>
+      <title>useState Hook을 사용해보자</title>
+      <link>https://imsirius.dev/post/220823/usestate-hook%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%B4%EB%B3%B4%EC%9E%90/</link>
       <pubDate>Tue, 23 Aug 2022 16:46:28 +0900</pubDate>
       
-      <guid>https://imsirius.dev/post/220823/react%EC%9D%98-usestate/</guid>
+      <guid>https://imsirius.dev/post/220823/usestate-hook%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%B4%EB%B3%B4%EC%9E%90/</guid>
       <description>useState Hook 리액트의 컴포넌트가 re-rendering 하는 조건 중 하나는 컴포넌트 안에 있는 state가 변경되었을 경우입니다. useState는 리액트가 컴포넌트들을 모니터링하기</description>
     </item>
     

@@ -4,16 +4,21 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>namecheap - IM SIRIUS</title>
+	<title>useState Hook을 사용해보자 - IM SIRIUS</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-		<meta property="og:title" content="namecheap" />
-<meta property="og:description" content="John Doe&#39;s Personal blog about everything" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://imsirius.dev/tags/namecheap/" />
+		<meta property="og:title" content="useState Hook을 사용해보자" />
+<meta property="og:description" content="useState Hook 리액트의 컴포넌트가 re-rendering 하는 조건 중 하나는 컴포넌트 안에 있는 state가 변경되었을 경우입니다. useState는 리액트가 컴포넌트들을 모니터링하기" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://imsirius.dev/post/220823/usestate-hook%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%B4%EB%B3%B4%EC%9E%90/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-08-23T16:46:28+09:00" />
+<meta property="article:modified_time" content="2022-08-23T16:46:28+09:00" />
 
-		<meta itemprop="name" content="namecheap">
-<meta itemprop="description" content="John Doe&#39;s Personal blog about everything">
+		<meta itemprop="name" content="useState Hook을 사용해보자">
+<meta itemprop="description" content="useState Hook 리액트의 컴포넌트가 re-rendering 하는 조건 중 하나는 컴포넌트 안에 있는 state가 변경되었을 경우입니다. useState는 리액트가 컴포넌트들을 모니터링하기"><meta itemprop="datePublished" content="2022-08-23T16:46:28+09:00" />
+<meta itemprop="dateModified" content="2022-08-23T16:46:28+09:00" />
+<meta itemprop="wordCount" content="654">
+<meta itemprop="keywords" content="react," />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -21,7 +26,6 @@
 
 	<link rel="stylesheet" href="/css/style.css">
 	
-	<link rel="alternate" type="application/rss+xml" href="/tags/namecheap/index.xml" title="IM SIRIUS">
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
@@ -73,37 +77,113 @@ if (!doNotTrack) {
 		<div class="wrapper flex">
 			<div class="primary">
 			
-<main class="main list" role="main">
-	<header class="main__header">
-		<h1 class="main__title">namecheap</h1>
-	</header><article class="list__item post">
-	
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/essay/230911/%EC%83%88%EB%A1%9C%EC%9A%B4-%EB%8F%84%EB%A9%94%EC%9D%B8%EC%9D%84-%EA%B5%AC%EB%A7%A4%ED%96%88%EB%8B%A4/" rel="bookmark">
-			도메인을 구매했다
-			</a>
-		</h2>
-		<p class="list__lead post__lead">.io보다 .dev가 더 애정이 가는거 같아요</p>
-		<div class="list__meta meta">
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">useState Hook을 사용해보자</h1>
+			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-09-12T03:52:49&#43;09:00">September 12, 2023</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/essay/" rel="category">Essay</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-08-23T16:46:28&#43;09:00">August 23, 2022</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/react/" rel="category">React</a>
 	</span>
 </div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		github.io말고 다른거 저는 개인적으로 초반부터 열정이 불타오르는 타입인데, 이번에 만드는 hugo 블로그는 줄곧 가지고 싶었던 .dev 도메인을 구매하기로 결정했
+		</header>
+		
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#usestate-hook">useState Hook</a>
+      <ul>
+        <li><a href="#setstate를-검사-하는-작동원리">setstate를 검사 하는 작동원리</a></li>
+        <li><a href="#re-render를-하는-3가지-상황">re-render를 하는 3가지 상황</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/essay/230911/%EC%83%88%EB%A1%9C%EC%9A%B4-%EB%8F%84%EB%A9%94%EC%9D%B8%EC%9D%84-%EA%B5%AC%EB%A7%A4%ED%96%88%EB%8B%A4/">Read more…</a>
-	</div>
-</article>
+</div><div class="content post__content clearfix">
+			<h2 id="usestate-hook">useState Hook</h2>
+<p>리액트의 컴포넌트가 re-rendering 하는 조건 중 하나는 컴포넌트 안에 있는 state가 변경되었을 경우입니다.</p>
+<ul>
+<li>
+<p>useState는 리액트가 컴포넌트들을 모니터링하기 위해 만들어진 개념입니다.</p>
+<ul>
+<li>state로 데이터를 만들면 리액트가 모니터링을 할 수 있습니다.</li>
+<li>리액트는 컴포넌트의 상태가 변경되었음을 알아야하기 때문에 리액트에서는 useState를 사용하여 상태를 관리합니다.</li>
+</ul>
+</li>
+<li>
+<p>useState는 배열을 반환 하는 호출가능한 함수이다.</p>
+<ul>
+<li>함수 실행 시 컴포넌트에 있는 값을 쓰는 것이 아니라 useState를 통해 가져온 배열을 사용하는 것</li>
+<li>배열의 첫번째 요소는 초기화된 값이며, 두 번째 값은 초기값을 변경할 수 있는 함수로 구성되어 있습니다.</li>
+</ul>
+</li>
+</ul>
+<p>useState 훅은 실제로 react 패키지에 들어있기 때문에 import를 해야합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span>,{ <span style="color:#a6e22e">useState</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;react&#39;</span>
+</span></span></code></pre></div><p>useState()에 전달하는 값은 상태 변수의 디폴트 값</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">title</span>, <span style="color:#a6e22e">setTitle</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">title</span>);
+</span></span></code></pre></div><h3 id="setstate를-검사-하는-작동원리">setstate를 검사 하는 작동원리</h3>
+<ul>
+<li>setState가 실행이 되면 React는 자기가 원래 가지고 있던 객체랑 setState로 들어온 객체랑 같은 건지 비교를 하는 작업을 거칩니다. ( 때문에 useState를 남발하는 것은 지양)</li>
+<li>만약 이 2개가 같다면 re-render를 하지 않아도 된다고 판단하고 skip합니다.</li>
+</ul>
+<blockquote>
+<p>** change와 change() **</p>
+<ul>
+<li>change = 변수의 의미</li>
+<li>change() = 실행한 결과의 의미</li>
+</ul>
+</blockquote>
+<p>state를 다루는 진짜 이유는 Re-rendering을 하기 위해서입니다. 다시 컴포넌트를 뿌려주기 위함이 목적입니다.</p>
+<h3 id="re-render를-하는-3가지-상황">re-render를 하는 3가지 상황</h3>
+<ul>
+<li>컴포넌트의 state가 변경이 되었을 때</li>
+<li>props가 변경이 되었을 때</li>
+<li>상위컴포넌트가 변경이 되어서 re-render가 되면, 하위 컴포넌트도 re-render</li>
+</ul>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/react/" rel="tag">react</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
 </main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Dong Heon Lee avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Dong Heon Lee</span>
+	</div>
+	<div class="authorbox__description">
+		John Doe&rsquo;s true identity is unknown. Maybe he is a successful blogger or writer. Nobody knows it.
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/post/220826/react%EC%97%90%EC%84%9C-input-%ED%83%9C%EA%B7%B8%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EC%82%AC%EC%9A%A9%ED%95%B4%EC%95%BC%ED%95%A0%EA%B9%8C/" rel="next">
+			<span class="pager__subtitle">Next&thinsp;»</span>
+			<p class="pager__title">React에서 Input 태그는 어떻게 사용해야할까</p>
+		</a>
+	</div>
+</nav>
 
 
 			</div>
-			
-<aside class="sidebar"><div class="widget-search widget">
+			<aside class="sidebar"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
 			<input class="widget-search__field" type="search" placeholder="SEARCH…" value="" name="q" aria-label="SEARCH…">
@@ -204,5 +284,7 @@ if (!doNotTrack) {
 </footer>
 	</div>
 <script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
 </body>
 </html>

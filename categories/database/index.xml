@@ -16,14 +16,5 @@
       <description>전체범위 처리와 부분범위 처리 자, 아래 쿼리는 전체범위 처리가 될지, 부분 범위 처리가 될지 한 번 생각해보자. select ** from table 이 쿼리는 테이블 전체를 다 읽어오니까 당연히</description>
     </item>
     
-    <item>
-      <title>Connection Pool(feat. HikariCP)</title>
-      <link>https://imsirius.dev/post/230217/connection-pool/</link>
-      <pubDate>Fri, 17 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://imsirius.dev/post/230217/connection-pool/</guid>
-      <description>대규모의 사용자가 DB연결을 반복하는 플랫폼을 실행하는 경우에는 Database와 connection을 생성하는 과정 자체가 비용이 많이 들고, 시간이 많</description>
-    </item>
-    
   </channel>
 </rss>
